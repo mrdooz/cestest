@@ -1,0 +1,2356 @@
+sheet: {
+    filename: 'space_sheet1.png';
+    size: 1024, 1024;
+};
+
+sprite : {
+    name: 'beam0';
+    offset: 143, 377;
+    size: 43, 31;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'beam1';
+    offset: 327, 644;
+    size: 40, 20;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'beam2';
+    offset: 262, 907;
+    size: 38, 31;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'beam3';
+    offset: 396, 384;
+    size: 29, 29;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'beam4';
+    offset: 177, 496;
+    size: 41, 17;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'beam5';
+    offset: 186, 377;
+    size: 40, 25;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'beam6';
+    offset: 120, 688;
+    size: 43, 23;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'beamLong1';
+    offset: 828, 943;
+    size: 15, 67;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'beamLong2';
+    offset: 307, 309;
+    size: 25, 64;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'bold_silver';
+    offset: 810, 837;
+    size: 19, 30;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'bolt_bronze';
+    offset: 810, 467;
+    size: 19, 30;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'bolt_gold';
+    offset: 809, 437;
+    size: 19, 30;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'buttonBlue';
+    offset: 0, 78;
+    size: 222, 39;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'buttonGreen';
+    offset: 0, 117;
+    size: 222, 39;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'buttonRed';
+    offset: 0, 0;
+    size: 222, 39;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'buttonYellow';
+    offset: 0, 39;
+    size: 222, 39;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'cockpitBlue_0';
+    offset: 586, 0;
+    size: 51, 75;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'cockpitBlue_1';
+    offset: 736, 862;
+    size: 40, 40;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'cockpitBlue_2';
+    offset: 684, 67;
+    size: 42, 56;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'cockpitBlue_3';
+    offset: 336, 384;
+    size: 60, 61;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'cockpitBlue_4';
+    offset: 637, 0;
+    size: 47, 67;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'cockpitBlue_5';
+    offset: 627, 144;
+    size: 48, 75;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'cockpitBlue_6';
+    offset: 684, 0;
+    size: 42, 67;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'cockpitBlue_7';
+    offset: 737, 542;
+    size: 41, 71;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'cockpitGreen_0';
+    offset: 576, 225;
+    size: 51, 75;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'cockpitGreen_1';
+    offset: 734, 977;
+    size: 40, 40;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'cockpitGreen_2';
+    offset: 696, 659;
+    size: 42, 56;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'cockpitGreen_3';
+    offset: 346, 234;
+    size: 60, 61;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'cockpitGreen_4';
+    offset: 627, 219;
+    size: 47, 67;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'cockpitGreen_5';
+    offset: 694, 364;
+    size: 42, 67;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'cockpitGreen_6';
+    offset: 737, 471;
+    size: 41, 71;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'cockpitGreen_7';
+    offset: 602, 525;
+    size: 48, 75;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'cockpitRed_0';
+    offset: 535, 75;
+    size: 51, 75;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'cockpitRed_1';
+    offset: 351, 982;
+    size: 40, 40;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'cockpitRed_2';
+    offset: 718, 197;
+    size: 42, 56;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'cockpitRed_3';
+    offset: 520, 661;
+    size: 60, 61;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'cockpitRed_4';
+    offset: 647, 857;
+    size: 47, 67;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'cockpitRed_5';
+    offset: 605, 707;
+    size: 48, 75;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'cockpitRed_6';
+    offset: 736, 795;
+    size: 42, 67;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'cockpitRed_7';
+    offset: 736, 329;
+    size: 41, 71;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'cockpitYellow_0';
+    offset: 726, 80;
+    size: 40, 40;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'cockpitYellow_1';
+    offset: 247, 309;
+    size: 60, 61;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'cockpitYellow_2';
+    offset: 637, 67;
+    size: 47, 67;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'cockpitYellow_3';
+    offset: 607, 782;
+    size: 48, 75;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'cockpitYellow_4';
+    offset: 696, 262;
+    size: 42, 67;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'cockpitYellow_5';
+    offset: 736, 400;
+    size: 41, 71;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'cockpitYellow_6';
+    offset: 734, 921;
+    size: 42, 56;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'cockpitYellow_7';
+    offset: 600, 375;
+    size: 51, 75;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'cursor';
+    offset: 797, 173;
+    size: 30, 33;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'enemyBlack1';
+    offset: 423, 728;
+    size: 93, 84;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'enemyBlack2';
+    offset: 120, 604;
+    size: 104, 84;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'enemyBlack3';
+    offset: 144, 156;
+    size: 103, 84;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'enemyBlack4';
+    offset: 518, 325;
+    size: 82, 84;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'enemyBlack5';
+    offset: 346, 150;
+    size: 97, 84;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'enemyBlue1';
+    offset: 425, 468;
+    size: 93, 84;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'enemyBlue2';
+    offset: 143, 293;
+    size: 104, 84;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'enemyBlue3';
+    offset: 222, 0;
+    size: 103, 84;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'enemyBlue4';
+    offset: 518, 409;
+    size: 82, 84;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'enemyBlue5';
+    offset: 421, 814;
+    size: 97, 84;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'enemyGreen1';
+    offset: 425, 552;
+    size: 93, 84;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'enemyGreen2';
+    offset: 133, 412;
+    size: 104, 84;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'enemyGreen3';
+    offset: 224, 496;
+    size: 103, 84;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'enemyGreen4';
+    offset: 518, 493;
+    size: 82, 84;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'enemyGreen5';
+    offset: 408, 907;
+    size: 97, 84;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'enemyRed1';
+    offset: 425, 384;
+    size: 93, 84;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'enemyRed2';
+    offset: 120, 520;
+    size: 104, 84;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'enemyRed3';
+    offset: 224, 580;
+    size: 103, 84;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'enemyRed4';
+    offset: 520, 577;
+    size: 82, 84;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'enemyRed5';
+    offset: 423, 644;
+    size: 97, 84;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'engine1';
+    offset: 224, 907;
+    size: 38, 23;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'engine2';
+    offset: 163, 688;
+    size: 42, 28;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'engine3';
+    offset: 644, 1002;
+    size: 27, 22;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'engine4';
+    offset: 144, 240;
+    size: 49, 45;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'engine5';
+    offset: 133, 496;
+    size: 44, 24;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'fire00';
+    offset: 827, 125;
+    size: 16, 40;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'fire01';
+    offset: 828, 206;
+    size: 14, 31;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'fire02';
+    offset: 827, 663;
+    size: 14, 32;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'fire03';
+    offset: 829, 437;
+    size: 14, 34;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'fire04';
+    offset: 831, 0;
+    size: 14, 31;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'fire05';
+    offset: 834, 299;
+    size: 14, 31;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'fire06';
+    offset: 835, 502;
+    size: 14, 31;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'fire07';
+    offset: 835, 330;
+    size: 14, 31;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'fire08';
+    offset: 827, 867;
+    size: 16, 40;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'fire09';
+    offset: 811, 663;
+    size: 16, 40;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'fire10';
+    offset: 812, 206;
+    size: 16, 40;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'fire11';
+    offset: 835, 395;
+    size: 14, 31;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'fire12';
+    offset: 835, 533;
+    size: 14, 32;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'fire13';
+    offset: 835, 361;
+    size: 14, 34;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'fire14';
+    offset: 831, 31;
+    size: 14, 31;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'fire15';
+    offset: 829, 471;
+    size: 14, 31;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'fire16';
+    offset: 828, 268;
+    size: 14, 31;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'fire17';
+    offset: 828, 237;
+    size: 14, 31;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'fire18';
+    offset: 827, 165;
+    size: 16, 41;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'fire19';
+    offset: 812, 246;
+    size: 16, 41;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'gun00';
+    offset: 827, 907;
+    size: 16, 36;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'gun01';
+    offset: 810, 867;
+    size: 17, 33;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'gun02';
+    offset: 829, 611;
+    size: 14, 36;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'gun03';
+    offset: 809, 796;
+    size: 20, 41;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'gun04';
+    offset: 827, 84;
+    size: 16, 41;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'gun05';
+    offset: 423, 0;
+    size: 21, 41;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'gun06';
+    offset: 810, 900;
+    size: 17, 38;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'gun07';
+    offset: 829, 796;
+    size: 14, 41;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'gun08';
+    offset: 848, 263;
+    size: 10, 47;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'gun09';
+    offset: 809, 611;
+    size: 20, 52;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'gun10';
+    offset: 808, 961;
+    size: 20, 52;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserBlue01';
+    offset: 856, 421;
+    size: 9, 54;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserBlue02';
+    offset: 841, 647;
+    size: 13, 37;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserBlue03';
+    offset: 856, 57;
+    size: 9, 37;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserBlue04';
+    offset: 835, 565;
+    size: 13, 37;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserBlue05';
+    offset: 858, 475;
+    size: 9, 37;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserBlue06';
+    offset: 835, 752;
+    size: 13, 37;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserBlue07';
+    offset: 856, 775;
+    size: 9, 37;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserBlue08';
+    offset: 596, 961;
+    size: 48, 46;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserBlue09';
+    offset: 434, 325;
+    size: 48, 46;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserBlue10';
+    offset: 740, 724;
+    size: 37, 37;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserBlue11';
+    offset: 698, 795;
+    size: 38, 37;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserBlue12';
+    offset: 835, 695;
+    size: 13, 57;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserBlue13';
+    offset: 856, 869;
+    size: 9, 57;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserBlue14';
+    offset: 842, 206;
+    size: 13, 57;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserBlue15';
+    offset: 849, 480;
+    size: 9, 57;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserBlue16';
+    offset: 843, 62;
+    size: 13, 54;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserGreen01';
+    offset: 740, 686;
+    size: 37, 38;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserGreen02';
+    offset: 843, 116;
+    size: 13, 57;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserGreen03';
+    offset: 855, 173;
+    size: 9, 57;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserGreen04';
+    offset: 848, 565;
+    size: 13, 37;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserGreen05';
+    offset: 854, 639;
+    size: 9, 37;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserGreen06';
+    offset: 845, 0;
+    size: 13, 57;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserGreen07';
+    offset: 849, 364;
+    size: 9, 57;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserGreen08';
+    offset: 848, 738;
+    size: 13, 37;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserGreen09';
+    offset: 856, 94;
+    size: 9, 37;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserGreen10';
+    offset: 843, 426;
+    size: 13, 54;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserGreen11';
+    offset: 849, 310;
+    size: 9, 54;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserGreen12';
+    offset: 843, 602;
+    size: 13, 37;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserGreen13';
+    offset: 858, 0;
+    size: 9, 37;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserGreen14';
+    offset: 193, 240;
+    size: 48, 46;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserGreen15';
+    offset: 443, 182;
+    size: 48, 46;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserGreen16';
+    offset: 760, 192;
+    size: 37, 37;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserRed01';
+    offset: 858, 230;
+    size: 9, 54;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserRed02';
+    offset: 843, 977;
+    size: 13, 37;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserRed03';
+    offset: 856, 602;
+    size: 9, 37;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserRed04';
+    offset: 843, 940;
+    size: 13, 37;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserRed05';
+    offset: 856, 983;
+    size: 9, 37;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserRed06';
+    offset: 843, 903;
+    size: 13, 37;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserRed07';
+    offset: 856, 131;
+    size: 9, 37;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserRed08';
+    offset: 580, 661;
+    size: 48, 46;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserRed09';
+    offset: 602, 600;
+    size: 48, 46;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserRed10';
+    offset: 738, 650;
+    size: 37, 36;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserRed11';
+    offset: 737, 613;
+    size: 37, 37;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserRed12';
+    offset: 843, 846;
+    size: 13, 57;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserRed13';
+    offset: 856, 812;
+    size: 9, 57;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserRed14';
+    offset: 843, 789;
+    size: 13, 57;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserRed15';
+    offset: 856, 926;
+    size: 9, 57;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'laserRed16';
+    offset: 848, 684;
+    size: 13, 54;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'meteorBrown_big1';
+    offset: 224, 664;
+    size: 101, 84;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'meteorBrown_big2';
+    offset: 0, 520;
+    size: 120, 98;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'meteorBrown_big3';
+    offset: 518, 810;
+    size: 89, 82;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'meteorBrown_big4';
+    offset: 327, 452;
+    size: 98, 96;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'meteorBrown_med1';
+    offset: 651, 447;
+    size: 43, 43;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'meteorBrown_med3';
+    offset: 237, 452;
+    size: 45, 40;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'meteorBrown_small1';
+    offset: 406, 234;
+    size: 28, 28;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'meteorBrown_small2';
+    offset: 778, 587;
+    size: 29, 26;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'meteorBrown_tiny1';
+    offset: 346, 814;
+    size: 18, 18;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'meteorBrown_tiny2';
+    offset: 399, 814;
+    size: 16, 15;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'meteorGrey_big1';
+    offset: 224, 748;
+    size: 101, 84;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'meteorGrey_big2';
+    offset: 0, 618;
+    size: 120, 98;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'meteorGrey_big3';
+    offset: 516, 728;
+    size: 89, 82;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'meteorGrey_big4';
+    offset: 327, 548;
+    size: 98, 96;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'meteorGrey_med1';
+    offset: 674, 219;
+    size: 43, 43;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'meteorGrey_med2';
+    offset: 282, 452;
+    size: 45, 40;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'meteorGrey_small1';
+    offset: 406, 262;
+    size: 28, 28;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'meteorGrey_small2';
+    offset: 396, 413;
+    size: 29, 26;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'meteorGrey_tiny1';
+    offset: 364, 814;
+    size: 18, 18;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'meteorGrey_tiny2';
+    offset: 602, 646;
+    size: 16, 15;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'numeral0';
+    offset: 367, 644;
+    size: 19, 19;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'numeral1';
+    offset: 205, 688;
+    size: 19, 19;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'numeral2';
+    offset: 406, 290;
+    size: 19, 19;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'numeral3';
+    offset: 580, 707;
+    size: 19, 19;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'numeral4';
+    offset: 386, 644;
+    size: 19, 19;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'numeral5';
+    offset: 628, 646;
+    size: 19, 19;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'numeral6';
+    offset: 671, 1002;
+    size: 19, 19;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'numeral7';
+    offset: 690, 1004;
+    size: 19, 19;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'numeral8';
+    offset: 709, 1004;
+    size: 19, 19;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'numeral9';
+    offset: 491, 215;
+    size: 19, 19;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'numeralX';
+    offset: 382, 814;
+    size: 17, 17;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'pill_blue';
+    offset: 674, 262;
+    size: 22, 21;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'pill_green';
+    offset: 573, 989;
+    size: 22, 21;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'pill_red';
+    offset: 222, 108;
+    size: 22, 21;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'pill_yellow';
+    offset: 222, 129;
+    size: 22, 21;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'playerLife1_blue';
+    offset: 482, 358;
+    size: 33, 26;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'playerLife1_green';
+    offset: 535, 150;
+    size: 33, 26;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'playerLife1_orange';
+    offset: 777, 327;
+    size: 33, 26;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'playerLife1_red';
+    offset: 775, 301;
+    size: 33, 26;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'playerLife2_blue';
+    offset: 465, 991;
+    size: 37, 26;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'playerLife2_green';
+    offset: 391, 991;
+    size: 37, 26;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'playerLife2_orange';
+    offset: 428, 991;
+    size: 37, 26;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'playerLife2_red';
+    offset: 502, 991;
+    size: 37, 26;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'playerLife3_blue';
+    offset: 777, 385;
+    size: 32, 26;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'playerLife3_green';
+    offset: 778, 469;
+    size: 32, 26;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'playerLife3_orange';
+    offset: 777, 712;
+    size: 32, 26;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'playerLife3_red';
+    offset: 777, 443;
+    size: 32, 26;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'playerShip1_blue';
+    offset: 211, 941;
+    size: 99, 75;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'playerShip1_damage1';
+    offset: 112, 941;
+    size: 99, 75;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'playerShip1_damage2';
+    offset: 247, 234;
+    size: 99, 75;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'playerShip1_damage3';
+    offset: 247, 159;
+    size: 99, 75;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'playerShip1_green';
+    offset: 237, 377;
+    size: 99, 75;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'playerShip1_orange';
+    offset: 247, 84;
+    size: 99, 75;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'playerShip1_red';
+    offset: 224, 832;
+    size: 99, 75;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'playerShip2_blue';
+    offset: 112, 791;
+    size: 112, 75;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'playerShip2_damage1';
+    offset: 0, 866;
+    size: 112, 75;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'playerShip2_damage2';
+    offset: 0, 791;
+    size: 112, 75;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'playerShip2_damage3';
+    offset: 0, 716;
+    size: 112, 75;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'playerShip2_green';
+    offset: 112, 866;
+    size: 112, 75;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'playerShip2_orange';
+    offset: 112, 716;
+    size: 112, 75;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'playerShip2_red';
+    offset: 0, 941;
+    size: 112, 75;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'playerShip3_blue';
+    offset: 325, 739;
+    size: 98, 75;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'playerShip3_damage1';
+    offset: 323, 832;
+    size: 98, 75;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'playerShip3_damage2';
+    offset: 310, 907;
+    size: 98, 75;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'playerShip3_damage3';
+    offset: 325, 664;
+    size: 98, 75;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'playerShip3_green';
+    offset: 346, 75;
+    size: 98, 75;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'playerShip3_orange';
+    offset: 336, 309;
+    size: 98, 75;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'playerShip3_red';
+    offset: 325, 0;
+    size: 98, 75;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'powerupBlue';
+    offset: 696, 329;
+    size: 34, 33;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'powerupBlue_bolt';
+    offset: 539, 989;
+    size: 34, 33;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'powerupBlue_shield';
+    offset: 777, 679;
+    size: 34, 33;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'powerupBlue_star';
+    offset: 776, 895;
+    size: 34, 33;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'powerupGreen';
+    offset: 774, 613;
+    size: 34, 33;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'powerupGreen_bolt';
+    offset: 766, 80;
+    size: 34, 33;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'powerupGreen_shield';
+    offset: 776, 862;
+    size: 34, 33;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'powerupGreen_star';
+    offset: 651, 490;
+    size: 34, 33;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'powerupRed';
+    offset: 491, 182;
+    size: 34, 33;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'powerupRed_bolt';
+    offset: 775, 646;
+    size: 34, 33;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'powerupRed_shield';
+    offset: 776, 928;
+    size: 34, 33;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'powerupRed_star';
+    offset: 774, 977;
+    size: 34, 33;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'powerupYellow';
+    offset: 774, 761;
+    size: 34, 33;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'powerupYellow_bolt';
+    offset: 740, 761;
+    size: 34, 33;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'powerupYellow_shield';
+    offset: 482, 325;
+    size: 34, 33;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'powerupYellow_star';
+    offset: 607, 857;
+    size: 34, 33;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'scratch1';
+    offset: 325, 814;
+    size: 21, 16;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'scratch2';
+    offset: 423, 41;
+    size: 21, 16;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'scratch3';
+    offset: 346, 295;
+    size: 16, 12;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'shield1';
+    offset: 0, 412;
+    size: 133, 108;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'shield2';
+    offset: 0, 293;
+    size: 143, 119;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'shield3';
+    offset: 0, 156;
+    size: 144, 137;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'shield_bronze';
+    offset: 797, 143;
+    size: 30, 30;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'shield_gold';
+    offset: 797, 113;
+    size: 30, 30;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'shield_silver';
+    offset: 778, 824;
+    size: 30, 30;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'speed';
+    offset: 858, 284;
+    size: 7, 108;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'star1';
+    offset: 628, 681;
+    size: 25, 24;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'star2';
+    offset: 222, 84;
+    size: 25, 24;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'star3';
+    offset: 576, 300;
+    size: 24, 24;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'star_bronze';
+    offset: 778, 794;
+    size: 31, 30;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'star_gold';
+    offset: 778, 557;
+    size: 31, 30;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'star_silver';
+    offset: 778, 527;
+    size: 31, 30;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'things_bronze';
+    offset: 778, 495;
+    size: 32, 32;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'things_gold';
+    offset: 777, 411;
+    size: 32, 32;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'things_silver';
+    offset: 777, 353;
+    size: 32, 32;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'turretBase_big';
+    offset: 310, 982;
+    size: 41, 41;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'turretBase_small';
+    offset: 808, 301;
+    size: 26, 26;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'ufoBlue';
+    offset: 444, 91;
+    size: 91, 91;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'ufoGreen';
+    offset: 434, 234;
+    size: 91, 91;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'ufoRed';
+    offset: 444, 0;
+    size: 91, 91;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'ufoYellow';
+    offset: 505, 898;
+    size: 91, 91;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'wingBlue_0';
+    offset: 647, 924;
+    size: 45, 78;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'wingBlue_1';
+    offset: 738, 253;
+    size: 37, 72;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'wingBlue_2';
+    offset: 805, 0;
+    size: 26, 84;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'wingBlue_3';
+    offset: 600, 450;
+    size: 51, 75;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'wingBlue_4';
+    offset: 692, 924;
+    size: 42, 80;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'wingBlue_5';
+    offset: 596, 892;
+    size: 51, 69;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'wingBlue_6';
+    offset: 694, 847;
+    size: 42, 74;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'wingBlue_7';
+    offset: 675, 134;
+    size: 43, 83;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'wingGreen_0';
+    offset: 650, 525;
+    size: 45, 78;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'wingGreen_1';
+    offset: 775, 229;
+    size: 37, 72;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'wingGreen_2';
+    offset: 809, 527;
+    size: 26, 84;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'wingGreen_3';
+    offset: 535, 0;
+    size: 51, 75;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'wingGreen_4';
+    offset: 694, 431;
+    size: 42, 80;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'wingGreen_5';
+    offset: 525, 251;
+    size: 51, 69;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'wingGreen_6';
+    offset: 695, 511;
+    size: 42, 74;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'wingGreen_7';
+    offset: 655, 764;
+    size: 43, 83;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'wingRed_0';
+    offset: 809, 712;
+    size: 26, 84;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'wingRed_1';
+    offset: 768, 0;
+    size: 37, 72;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'wingRed_2';
+    offset: 600, 300;
+    size: 51, 75;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'wingRed_3';
+    offset: 698, 715;
+    size: 42, 80;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'wingRed_4';
+    offset: 586, 75;
+    size: 51, 69;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'wingRed_5';
+    offset: 718, 123;
+    size: 42, 74;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'wingRed_6';
+    offset: 653, 681;
+    size: 43, 83;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'wingRed_7';
+    offset: 651, 286;
+    size: 45, 78;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'wingYellow_0';
+    offset: 650, 603;
+    size: 45, 78;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'wingYellow_1';
+    offset: 760, 120;
+    size: 37, 72;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'wingYellow_2';
+    offset: 809, 353;
+    size: 26, 84;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'wingYellow_3';
+    offset: 576, 150;
+    size: 51, 75;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'wingYellow_4';
+    offset: 726, 0;
+    size: 42, 80;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'wingYellow_5';
+    offset: 525, 182;
+    size: 51, 69;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'wingYellow_6';
+    offset: 695, 585;
+    size: 42, 74;
+    repeat: 1;
+    spacing: 0;
+};
+
+sprite : {
+    name: 'wingYellow_7';
+    offset: 651, 364;
+    size: 43, 83;
+    repeat: 1;
+    spacing: 0;
+};
