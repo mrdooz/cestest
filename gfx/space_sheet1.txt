@@ -1,5 +1,5 @@
 sheet: {
-    filename: 'space_sheet1.png';
+    filename: 'gfx/space_sheet1.png';
     size: 1024, 1024;
 };
 

@@ -21,4 +21,11 @@ namespace ces
   {
     float x, y, z, w;
   };
+
+  struct SpriteVtx
+  {
+    Vector2 pos;
+    Vector2 uv;
+    u32 col;
+  };
 }
