@@ -250,25 +250,21 @@ int main(int, char**)
   bool show_test_window = true;
   bool show_another_window = false;
 
-  ObjectHandle textureHandle, shaderProgram;
-
-  GLuint vboHandle = 0;
-  GLuint elementsHandle = 0;
-  GLuint vaoHandle = 0;
-
-  int glShaderProgram = 0;
-
   SpriteSheetSettings sheet;
   ParseSpriteSheet("gfx/space_sheet1.txt", &sheet);
-  textureHandle = GRAPHICS.CreateSpriteSheet(sheet);
-  shaderProgram = GRAPHICS.LoadShaderProgram("shaders/sprite.vs", "shaders/sprite.fs");
-  glShaderProgram = GRAPHICS._resShaderPrograms.Get(shaderProgram).glHandle;
+  ObjectHandle textureHandle = GRAPHICS.CreateSpriteSheet(sheet);
+  ObjectHandle shaderProgram = GRAPHICS.LoadShaderProgram("shaders/sprite.vs", "shaders/sprite.fs");
+  int glShaderProgram = GRAPHICS._resShaderPrograms.Get(shaderProgram).glHandle;
 
   int attribLocationTex; GL_CHECK(attribLocationTex = glGetUniformLocation(glShaderProgram, "Texture"));
   int attribLocationProjMtx; GL_CHECK(attribLocationProjMtx = glGetUniformLocation(glShaderProgram, "ProjMtx"));
   int attribLocationPosition; GL_CHECK(attribLocationPosition = glGetAttribLocation(glShaderProgram, "Position"));
   int attribLocationUV; GL_CHECK(attribLocationUV = glGetAttribLocation(glShaderProgram, "UV"));
   int attribLocationColor; GL_CHECK(attribLocationColor = glGetAttribLocation(glShaderProgram, "Color"));
+
+  GLuint vboHandle = 0;
+  GLuint elementsHandle = 0;
+  GLuint vaoHandle = 0;
 
   glGenBuffers(1, &vboHandle);
   glGenBuffers(1, &elementsHandle);
@@ -332,7 +328,7 @@ int main(int, char**)
 
     vector<SpriteVtx> verts;
     vector<u32> indices;
-    SPRITE_MANAGER.CopyOut("wingYellow_7", Vector2{0,0}, &verts, &indices);
+    SPRITE_MANAGER.CopyOut("playerShip1_blue", Vector2{0,0}, &verts, &indices);
 
     GL_CHECK(glBindBuffer(GL_ARRAY_BUFFER, vboHandle));
     GL_CHECK(glBufferData(GL_ARRAY_BUFFER, (GLsizeiptr)verts.size() * sizeof(SpriteVtx), (GLvoid*)verts.data(), GL_STREAM_DRAW));

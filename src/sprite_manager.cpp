@@ -56,10 +56,10 @@ void SpriteManager::CopyOut(const string& name, const Vector2& pos, vector<Sprit
   Vector2 v2{pos.x + w, pos.y + h};
   Vector2 v3{pos.x + w, pos.y - h};
 
-  v0 = Vector2{0, 200};
-  v1 = Vector2{0, 0};
-  v2 = Vector2{200, 0};
-  v3 = Vector2{200, 200};
+  v0 = Vector2{pos.x, pos.y + s.size.y};
+  v1 = Vector2{pos.x, pos.y};
+  v2 = Vector2{pos.x + s.size.x, pos.y};
+  v3 = Vector2{pos.x + s.size.x, pos.y + s.size.y};
 
   Vector2 t0{s.uvTopLeft.x, s.uvBottomRight.y};
   Vector2 t1{s.uvTopLeft.x, s.uvTopLeft.y};

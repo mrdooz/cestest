@@ -29,22 +29,6 @@ namespace ces
       enum { type = ObjectHandle::ShaderProgram };
 
       GLuint glHandle = 0;
-      ObjectHandle vs;
-      ObjectHandle fs;
-    };
-
-    struct VertexShader
-    {
-      enum { type = ObjectHandle::VertexShader };
-
-      GLuint glHandle = 0;
-    };
-
-    struct FragmentShader
-    {
-      enum { type = ObjectHandle::FragmentShader };
-
-      GLuint glHandle = 0;
     };
 
     template <typename T>
@@ -99,8 +83,6 @@ namespace ces
     static Graphics* _instance;
 
     graphics::Resource<graphics::Texture> _resTextures;
-    graphics::Resource<graphics::VertexShader> _resVertexShaders;
-    graphics::Resource<graphics::FragmentShader> _resFragmentShaders;
     graphics::Resource<graphics::ShaderProgram> _resShaderPrograms;
   };
   

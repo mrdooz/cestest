@@ -79,8 +79,6 @@ ObjectHandle Graphics::LoadShaderProgram(const char* vs, const char* fs)
     return ObjectHandle();
   }
 
-  graphics::VertexShader vsObj;
-  graphics::FragmentShader fsObj;
   graphics::ShaderProgram program;
 
   const GLchar *vertex_shader =
@@ -109,15 +107,18 @@ ObjectHandle Graphics::LoadShaderProgram(const char* vs, const char* fs)
   "	Out_Color = Frag_Color * texture( Texture, Frag_UV.st);\n"
   "}\n";
 
+  int vsHandle = 0;
+  int fsHandle = 0;
+
   GL_CHECK(program.glHandle = glCreateProgram());
-  GL_CHECK(vsObj.glHandle = glCreateShader(GL_VERTEX_SHADER));
-  GL_CHECK(fsObj.glHandle = glCreateShader(GL_FRAGMENT_SHADER));
-  CompileAndAttachShader(vertex_shader, vsObj.glHandle, program.glHandle);
-  CompileAndAttachShader(fragment_shader, fsObj.glHandle, program.glHandle);
+  GL_CHECK(vsHandle = glCreateShader(GL_VERTEX_SHADER));
+  GL_CHECK(fsHandle = glCreateShader(GL_FRAGMENT_SHADER));
+  CompileAndAttachShader(vertex_shader, vsHandle, program.glHandle);
+  CompileAndAttachShader(fragment_shader, fsHandle, program.glHandle);
   GL_CHECK(glLinkProgram(program.glHandle));
 
-  program.vs = _resVertexShaders.Add(vsObj);
-  program.fs = _resFragmentShaders.Add(fsObj);
+  glDeleteShader(vsHandle);
+  glDeleteShader(fsHandle);
 
   return _resShaderPrograms.Add(program);
 }
@@ -138,7 +139,7 @@ ObjectHandle Graphics::CreateSpriteSheet(const SpriteSheetSettings& sheet)
     SPRITE_MANAGER.AddSprite(s.name, s.sub,
                              Vector2{s.pos.x / w, s.pos.y / h},
                              Vector2{(s.pos.x + s.size.x) / w, (s.pos.y + s.size.y) / h},
-                             s.pos);
+                             s.size);
   }
 
   return handle;
