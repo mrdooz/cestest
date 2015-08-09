@@ -38,12 +38,77 @@ struct SpriteInfo
   vector<int> sprites;
 };
 
-
 struct RenderComponent
 {
-
+  static RenderComponent* Create(u32 spriteIdx, const Vector2& pos);
   u32 spriteIdx;
+  Vector2 pos;
 };
+
+void CreateFreeList(int stride, int numElems, char* buf)
+{
+  for (int i = 0; i < numElems; ++i)
+  {
+    u16* p = (u16*)(buf + i * stride);
+    *p = (i == numElems-1) ? 0xffff : i + 1;
+  }
+}
+
+template <typename T, int MAX_NUM_COMPONENTS = 1024>
+struct ComponentSystem
+{
+  ComponentSystem()
+  {
+    // create the free list between the components
+    CreateFreeList(sizeof(T), MAX_NUM_COMPONENTS, (char*)components);
+  }
+
+  template <typename... Args>
+  T* AllocComponent(Args... args)
+  {
+    // grab the next free component, and use his "next free" for the new head
+    char* ptr = &components[freeListHead * sizeof(T)];
+    freeListHead = *(u16*)ptr;
+    return new(ptr)RenderComponent{args...};
+  }
+
+  void FreeComponent(T* ptr)
+  {
+    u16 idx = ptr - (T*)components;
+    *(u16*)ptr = freeListHead;
+    freeListHead = idx;
+  }
+
+  char components[sizeof(T) * MAX_NUM_COMPONENTS];
+  u16 freeListHead = 0;
+};
+
+struct UpdateState
+{
+  float delta;
+  float curTime;
+};
+
+struct FixedUpdateState
+{
+  float delta;
+  float curTime;
+};
+
+struct RenderSystem : public ComponentSystem<RenderComponent>
+{
+  void Tick(const UpdateState& state)
+  {
+
+  }
+};
+
+RenderSystem g_RenderSystem;
+
+RenderComponent* RenderComponent::Create(u32 spriteIdx, const Vector2& pos)
+{
+  return g_RenderSystem.AllocComponent(spriteIdx, pos);
+}
 
 struct MovementComponent
 {
@@ -67,7 +132,8 @@ struct Entity
 
 struct AlienEntity
 {
-
+  PositionComponent* pos;
+  RenderComponent* render;
 };
 
 struct MovementSystem
@@ -85,32 +151,55 @@ bool SkipToken(InputBuffer& buf, char token)
 }
 
 //------------------------------------------------------------------------------
-bool ParseSpriteSheetSettings(InputBuffer& buf, SpriteSheetSettings* settings)
+struct KeywordParser
 {
-  buf.SkipWhitespace();
-  while (!buf.Eof())
+  KeywordParser(InputBuffer& input) : input(input) {}
+  bool Run()
   {
-    string keyword;
-    CHECKED_OP(ParseIdentifier(buf, &keyword, true));
-    buf.SkipWhitespace();
+    input.SkipWhitespace();
+    while (!input.Eof())
+    {
+      input.SkipWhitespace();
+      string keyword;
+      CHECKED_OP(ParseIdentifier(input, &keyword, true));
+      input.SkipWhitespace();
 
-    if (keyword == "filename")
-    {
-      CHECKED_OP(ParseIdentifier(buf, &settings->filename, false));
+      auto it = evals.find(keyword);
+      if (it == evals.end())
+      {
+        LOG_ERROR("Unknown keyword found: ", keyword);
+        return false;
+      }
+
+      if (!it->second())
+        return false;
+
+      CHECKED_OP(SkipToken(input, ';'));
     }
-    else if (keyword == "size")
-    {
-      CHECKED_OP(ParseVec2(buf, &settings->size));
-    }
-    else
-    {
-      LOG_ERROR("Unknown token while parsing sprite sheet: ", keyword);
-      return false;
-    }
-    CHECKED_OP(SkipToken(buf, ';'));
+    return true;
   }
 
-  return true;
+  void AddEval(const string& keyword, const function<bool()>& fn)
+  {
+    evals[keyword] = fn;
+  }
+
+  unordered_map<string, function<bool()>> evals;
+  InputBuffer& input;
+};
+
+//------------------------------------------------------------------------------
+bool ParseSpriteSheetSettings(InputBuffer& buf, SpriteSheetSettings* settings)
+{
+  KeywordParser k(buf);
+  k.AddEval("filename", [&]() {
+    return ParseIdentifier(buf, &settings->filename, false);
+  });
+  k.AddEval("size", [&]() {
+    return ParseVec2(buf, &settings->size);
+  });
+
+  return k.Run();
 }
 
 //------------------------------------------------------------------------------
@@ -123,45 +212,16 @@ bool ParseSingleSprite(InputBuffer& buf, vector<SpriteSettings>* sprites)
   int repeat = 1;
   int spacing = 0;
 
-  buf.SkipWhitespace();
-  while (!buf.Eof())
-  {
-    string keyword;
-    CHECKED_OP(ParseIdentifier(buf, &keyword, true));
-    buf.SkipWhitespace();
+  KeywordParser k(buf);
+  k.AddEval("name", [&]() { return ParseIdentifier(buf, &name, false); });
+  k.AddEval("sub", [&]() { return ParseIdentifier(buf, &sub, false); });
+  k.AddEval("offset", [&]() { return ParseVec2(buf, &offset); });
+  k.AddEval("size", [&]() { return ParseVec2(buf, &size); });
+  k.AddEval("repeat", [&]() { return ParseInt(buf, &repeat); });
+  k.AddEval("spacing", [&]() { return ParseInt(buf, &spacing); });
 
-    if (keyword == "name")
-    {
-      CHECKED_OP(ParseIdentifier(buf, &name, false));
-    }
-    else if (keyword == "sub")
-    {
-      CHECKED_OP(ParseIdentifier(buf, &sub, false));
-    }
-    else if (keyword == "offset")
-    {
-      CHECKED_OP(ParseVec2(buf, &offset));
-    }
-    else if (keyword == "size")
-    {
-      CHECKED_OP(ParseVec2(buf, &size));
-    }
-    else if (keyword == "repeat")
-    {
-      CHECKED_OP(ParseInt(buf, &repeat));
-    }
-    else if (keyword == "spacing")
-    {
-      CHECKED_OP(ParseInt(buf, &spacing));
-    }
-    else
-    {
-      LOG_ERROR("Unknown token while parsing sprite: ", keyword);
-      return false;
-    }
-    CHECKED_OP(SkipToken(buf, ';'));
-
-  }
+  if (!k.Run())
+    return false;
 
   // create the sprite settings from the input
   Vector2 pos = offset;
@@ -183,32 +243,21 @@ bool ParseSpriteSheet(const char* filename, SpriteSheetSettings* sheet)
     return false;
 
   InputBuffer input(buf);
+  KeywordParser k(input);
 
-  while (!input.Eof())
-  {
-    input.SkipWhitespace();
-    string keyword;
-    CHECKED_OP(ParseIdentifier(input, &keyword, true));
+  InputBuffer inner;
 
-    InputBuffer inner;
-    if (keyword == "sprite")
-    {
-      input.InnerScope("{}", false, &inner);
-      CHECKED_OP(ParseSingleSprite(inner, &sheet->sprites));
-    }
-    else if (keyword == "sheet")
-    {
-      input.InnerScope("{}", false, &inner);
-      CHECKED_OP(ParseSpriteSheetSettings(inner, sheet));
-    }
-    else
-    {
-      LOG_ERROR("Unknown token while parsing sprite sheet: ", keyword);
-    }
-    CHECKED_OP(SkipToken(input, ';'));
-  }
+  k.AddEval("sprite", [&]() {
+    input.InnerScope("{}", false, &inner);
+    return ParseSingleSprite(inner, &sheet->sprites);
+  });
 
-  return true;
+  k.AddEval("sheet", [&]() {
+    input.InnerScope("{}", false, &inner);
+    return ParseSpriteSheetSettings(inner, sheet);
+  });
+
+  return k.Run();
 }
 
 //------------------------------------------------------------------------------
@@ -220,11 +269,11 @@ int main(int, char**)
   Graphics::Create();
   SpriteManager::Create();
 
-  //  int NUM_ALIENS = 10;
-
-  //  AlienEntity* aliens[NUM_ALIENS];
+  int NUM_ALIENS = 10;
+  AlienEntity* aliens[NUM_ALIENS];
   for (int i = 0; i < 10; ++i)
   {
+    aliens[i] = new AlienEntity();
     //    aliens[i] = new AlienEntity(
   }
   // Setup window

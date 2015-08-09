@@ -1,6 +1,7 @@
 #pragma once
 
 #include "types.hpp"
+#include "object_handle.hpp"
 
 namespace ces
 {
@@ -11,7 +12,7 @@ namespace ces
 
     static SpriteManager& Instance();
 
-    void AddSprite(const string& name, const string& sub, const Vector2& uvTopLeft, const Vector2& uvBottomRight, const Vector2& size);
+    void AddSprite(const string& name, const string& sub, const Vector2& uvTopLeft, const Vector2& uvBottomRight, const Vector2& size, ObjectHandle handle);
     void CopyOut(const string& name, const Vector2& pos, vector<SpriteVtx>* verts, vector<u32>* indices);
 
     bool Init();
@@ -21,6 +22,7 @@ namespace ces
       Vector2 uvTopLeft;
       Vector2 uvBottomRight;
       Vector2 size;
+      ObjectHandle handle;
     };
 
     static SpriteManager* _instance;

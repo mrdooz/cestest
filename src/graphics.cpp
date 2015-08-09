@@ -58,6 +58,17 @@ void CompileAndAttachShader(const char* buf, GLuint shader, GLuint program)
 {
   GL_CHECK(glShaderSource(shader, 1, &buf, 0));
   GL_CHECK(glCompileShader(shader));
+
+  GLint logLength;
+  glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &logLength);
+
+  if (logLength)
+  {
+    char* log = (char*)alloca(logLength);
+    glGetShaderInfoLog(shader, logLength, NULL, log);
+    LOG_WARN("Error compiling shader:", log);
+  }
+
   GL_CHECK(glAttachShader(program, shader));
 }
 
@@ -139,7 +150,8 @@ ObjectHandle Graphics::CreateSpriteSheet(const SpriteSheetSettings& sheet)
     SPRITE_MANAGER.AddSprite(s.name, s.sub,
                              Vector2{s.pos.x / w, s.pos.y / h},
                              Vector2{(s.pos.x + s.size.x) / w, (s.pos.y + s.size.y) / h},
-                             s.size);
+                             s.size,
+                             handle);
   }
 
   return handle;

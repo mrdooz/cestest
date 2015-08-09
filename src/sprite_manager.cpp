@@ -27,9 +27,9 @@ bool SpriteManager::Init()
 }
 
 //------------------------------------------------------------------------------
-void SpriteManager::AddSprite(const string& name, const string& sub, const Vector2& uvTopLeft, const Vector2& uvBottomRight, const Vector2& size)
+void SpriteManager::AddSprite(const string& name, const string& sub, const Vector2& uvTopLeft, const Vector2& uvBottomRight, const Vector2& size, ObjectHandle handle)
 {
-  _sprites[name] = Sprite{ uvTopLeft, uvBottomRight, size };
+  _sprites[name] = Sprite{ uvTopLeft, uvBottomRight, size, handle };
 }
 
 //------------------------------------------------------------------------------
