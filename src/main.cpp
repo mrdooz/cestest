@@ -8,9 +8,11 @@
 #include "logging.hpp"
 #include "graphics.hpp"
 #include "sprite_manager.hpp"
-#include "entities.hpp"
+#include "entity.hpp"
 #include "components.hpp"
-#include "render_system.hpp"
+#include "system/render.hpp"
+#include "system/input.hpp"
+#include "system/physics.hpp"
 
 using namespace ces;
 
@@ -42,10 +44,6 @@ struct SpriteInfo
   vector<int> sprites;
 };
 
-struct MovementSystem
-{
-};
-
 //------------------------------------------------------------------------------
 int main(int, char**)
 {
@@ -54,14 +52,6 @@ int main(int, char**)
   ResourceManager::Create();
   Graphics::Create();
   SpriteManager::Create();
-
-  int NUM_ALIENS = 10;
-  AlienEntity* aliens[NUM_ALIENS];
-  for (int i = 0; i < 10; ++i)
-  {
-    aliens[i] = new AlienEntity();
-    //    aliens[i] = new AlienEntity(
-  }
 
   // Setup window
   glfwSetErrorCallback(error_callback);
@@ -82,12 +72,48 @@ int main(int, char**)
   ImGui_ImplGlfwGL3_CreateDeviceObjects();
 
   g_RenderSystem.Init();
+  g_InputSystem.Init();
+
+  vector<Entity> entities;
+
+  // clang-format off
+  for (int i = 0; i < 10; ++i)
+  {
+    entities.push_back(
+        Entity()
+        .AddComponent(PositionComponent::FACTORY.AllocComponent(Vector2{(float)i * 100, 0}), ComponentMask::CMPosition)
+        .AddComponent(RenderComponent::FACTORY.AllocComponent(SPRITE_MANAGER.GetSpriteIndex("enemyBlack1")), ComponentMask::CMRender));
+  }
+
+  entities.push_back(
+        Entity()
+        .AddComponent(PositionComponent::FACTORY.AllocComponent(Vector2{100, 100}),ComponentMask::CMPosition)
+        .AddComponent(RenderComponent::FACTORY.AllocComponent(SPRITE_MANAGER.GetSpriteIndex("playerShip1_red")), ComponentMask::CMRender)
+        .AddComponent(InputComponent::FACTORY.AllocComponent(), ComponentMask::CMInput)
+        .AddComponent(PhysicsComponent::FACTORY.AllocComponent(), ComponentMask::CMPhysics));
+
+  vector<SystemBase*> systems;
+  systems.push_back(&g_RenderSystem);
+  systems.push_back(&g_InputSystem);
+  systems.push_back(&g_PhysicsSystem);
+
+  for (Entity& e : entities)
+  {
+    for (SystemBase* system : systems)
+    {
+      if ((e.componentMask & system->componentMask) == system->componentMask)
+      {
+        // the entity has all the components the system wants, so add it
+        system->AddEntity(e);
+      }
+    }
+  }
 
   bool show_test_window = true;
   bool show_another_window = false;
 
-  RenderComponent::Create("enemyBlack1", Vector2{0,0});
-  RenderComponent::Create("enemyBlack2", Vector2{120,0});
+  //  RenderComponent::Create("enemyBlack1", Vector2{0,0});
+  //  RenderComponent::Create("enemyBlack2", Vector2{120,0});
 
   // Main loop
   while (!glfwWindowShouldClose(window))
@@ -105,13 +131,20 @@ int main(int, char**)
       static float f = 0.0f;
       ImGui::Text("Hello, world!");
       ImGui::SliderFloat("float", &f, 0.0f, 1.0f);
-      if (ImGui::Button("Test Window")) show_test_window ^= 1;
-      if (ImGui::Button("Another Window")) show_another_window ^= 1;
-      ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+      if (ImGui::Button("Test Window"))
+        show_test_window ^= 1;
+      if (ImGui::Button("Another Window"))
+        show_another_window ^= 1;
+      ImGui::Text("Application average %.3f ms/frame (%.1f FPS)",
+          1000.0f / ImGui::GetIO().Framerate,
+          ImGui::GetIO().Framerate);
     }
 
     UpdateState state;
-    g_RenderSystem.Tick(state);
+    for (SystemBase* s: systems)
+    {
+      s->Tick(state);
+    }
 
     ImGui::Render();
     glfwSwapBuffers(window);

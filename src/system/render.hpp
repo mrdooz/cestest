@@ -6,10 +6,21 @@
 
 namespace ces
 {
-  struct RenderSystem : public SystemBase<RenderComponent>
+  struct RenderSystem : public SystemBase
   {
+    RenderSystem();
     bool Init();
     void Tick(const UpdateState& state);
+
+    virtual void AddEntity(const Entity& entity);
+
+    struct SystemEntity
+    {
+      PositionComponent* pos;
+      RenderComponent* render;
+    };
+
+    vector<SystemEntity> entities;
 
     GLuint vaoHandle;
     GLuint vboHandle;

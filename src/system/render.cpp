@@ -1,12 +1,28 @@
-#include "render_system.hpp"
+#include "render.hpp"
 #include "parse_sprite.hpp"
 #include "graphics.hpp"
 #include "logging.hpp"
 #include "sprite_manager.hpp"
+#include "entity.hpp"
 
 using namespace ces;
 
 RenderSystem ces::g_RenderSystem;
+
+//------------------------------------------------------------------------------
+RenderSystem::RenderSystem()
+  : SystemBase(CMPosition | CMRender)
+{
+
+}
+
+//------------------------------------------------------------------------------
+void RenderSystem::AddEntity(const Entity& entity)
+{
+  entities.push_back(SystemEntity{
+    (PositionComponent*)entity.GetComponent(CMPosition),
+    (RenderComponent*)entity.GetComponent(CMRender)});
+}
 
 //------------------------------------------------------------------------------
 bool RenderSystem::Init()
@@ -72,10 +88,9 @@ void RenderSystem::Tick(const UpdateState& state)
   vector<u32> indices;
 
   // copy out all the active components
-  for (int i = 0, idx = activeComponents[0]; idx != -1; ++i, idx = activeComponents[i])
+  for (SystemEntity& e : entities)
   {
-    const RenderComponent& r = Get(idx);
-    SPRITE_MANAGER.CopyOut(r.spriteIdx, r.pos, &verts, &indices);
+    SPRITE_MANAGER.CopyOut(e.render->spriteIdx, e.pos->pos, &verts, &indices);
   }
 
   GL_CHECK(glBindBuffer(GL_ARRAY_BUFFER, vboHandle));

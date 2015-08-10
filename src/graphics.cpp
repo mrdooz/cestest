@@ -92,31 +92,29 @@ ObjectHandle Graphics::LoadShaderProgram(const char* vs, const char* fs)
 
   graphics::ShaderProgram program;
 
-  const GLchar *vertex_shader =
-  "#version 330\n"
-  "uniform mat4 ProjMtx;\n"
-  "in vec2 Position;\n"
-  "in vec2 UV;\n"
-  "in vec4 Color;\n"
-  "out vec2 Frag_UV;\n"
-  "out vec4 Frag_Color;\n"
-  "void main()\n"
-  "{\n"
-  "	Frag_UV = UV;\n"
-  "	Frag_Color = Color;\n"
-  "	gl_Position = ProjMtx * vec4(Position.xy,0,1);\n"
-  "}\n";
+  const GLchar* vertex_shader = "#version 330\n"
+                                "uniform mat4 ProjMtx;\n"
+                                "in vec2 Position;\n"
+                                "in vec2 UV;\n"
+                                "in vec4 Color;\n"
+                                "out vec2 Frag_UV;\n"
+                                "out vec4 Frag_Color;\n"
+                                "void main()\n"
+                                "{\n"
+                                "	Frag_UV = UV;\n"
+                                "	Frag_Color = Color;\n"
+                                "	gl_Position = ProjMtx * vec4(Position.xy,0,1);\n"
+                                "}\n";
 
-  const GLchar* fragment_shader =
-  "#version 330\n"
-  "uniform sampler2D Texture;\n"
-  "in vec2 Frag_UV;\n"
-  "in vec4 Frag_Color;\n"
-  "out vec4 Out_Color;\n"
-  "void main()\n"
-  "{\n"
-  "	Out_Color = Frag_Color * texture( Texture, Frag_UV.st);\n"
-  "}\n";
+  const GLchar* fragment_shader = "#version 330\n"
+                                  "uniform sampler2D Texture;\n"
+                                  "in vec2 Frag_UV;\n"
+                                  "in vec4 Frag_Color;\n"
+                                  "out vec4 Out_Color;\n"
+                                  "void main()\n"
+                                  "{\n"
+                                  "	Out_Color = Frag_Color * texture( Texture, Frag_UV.st);\n"
+                                  "}\n";
 
   int vsHandle = 0;
   int fsHandle = 0;
@@ -147,11 +145,12 @@ ObjectHandle Graphics::CreateSpriteSheet(const SpriteSheetSettings& sheet)
   for (const SpriteSettings& s : sheet.sprites)
   {
     // Note, pos and size are in texture coords
-    SPRITE_MANAGER.AddSprite(s.name, s.sub,
-                             Vector2{s.pos.x / w, s.pos.y / h},
-                             Vector2{(s.pos.x + s.size.x) / w, (s.pos.y + s.size.y) / h},
-                             s.size,
-                             handle);
+    SPRITE_MANAGER.AddSprite(s.name,
+        s.sub,
+        Vector2{s.pos.x / w, s.pos.y / h},
+        Vector2{(s.pos.x + s.size.x) / w, (s.pos.y + s.size.y) / h},
+        s.size,
+        handle);
   }
 
   return handle;
