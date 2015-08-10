@@ -2,6 +2,8 @@
 
 namespace ces
 {
+  const static u16 INVALID_SPRITE = 0xffff;
+
   struct Color
   {
     float r, g, b, a;

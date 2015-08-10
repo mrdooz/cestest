@@ -27,18 +27,23 @@ bool SpriteManager::Init()
 }
 
 //------------------------------------------------------------------------------
-void SpriteManager::AddSprite(const string& name, const string& sub, const Vector2& uvTopLeft, const Vector2& uvBottomRight, const Vector2& size, ObjectHandle handle)
+u16 SpriteManager::AddSprite(const string& name,
+    const string& sub,
+    const Vector2& uvTopLeft,
+    const Vector2& uvBottomRight,
+    const Vector2& size,
+    ObjectHandle handle)
 {
-  _sprites[name] = Sprite{ uvTopLeft, uvBottomRight, size, handle };
+  u16 id = (u16)_sprites.size();
+  Sprite* sprite = new Sprite{uvTopLeft, uvBottomRight, size, handle, id};
+  _spritesByName[name] = sprite;
+  _sprites.push_back(sprite);
+  return id;
 }
 
 //------------------------------------------------------------------------------
-void SpriteManager::CopyOut(const string& name, const Vector2& pos, vector<SpriteVtx>* verts, vector<u32>* indices)
+void SpriteManager::CopyOut(const Sprite* sprite, const Vector2& pos, vector<SpriteVtx>* verts, vector<u32>* indices)
 {
-  auto it = _sprites.find(name);
-  if (it == _sprites.end())
-    return;
-
   // 1--2
   // |  |
   // 0--3
@@ -47,24 +52,17 @@ void SpriteManager::CopyOut(const string& name, const Vector2& pos, vector<Sprit
   // 0, 3, 1
   // 3, 2, 1
 
-  const Sprite& s = it->second;
-  float w = s.size.x / 2;
-  float h = s.size.y / 2;
+  int vertOfs = (int)verts->size();
 
-  Vector2 v0{pos.x - w, pos.y - h};
-  Vector2 v1{pos.x - w, pos.y + h};
-  Vector2 v2{pos.x + w, pos.y + h};
-  Vector2 v3{pos.x + w, pos.y - h};
+  Vector2 v0 = Vector2{pos.x, pos.y + sprite->size.y};
+  Vector2 v1 = Vector2{pos.x, pos.y};
+  Vector2 v2 = Vector2{pos.x + sprite->size.x, pos.y};
+  Vector2 v3 = Vector2{pos.x + sprite->size.x, pos.y + sprite->size.y};
 
-  v0 = Vector2{pos.x, pos.y + s.size.y};
-  v1 = Vector2{pos.x, pos.y};
-  v2 = Vector2{pos.x + s.size.x, pos.y};
-  v3 = Vector2{pos.x + s.size.x, pos.y + s.size.y};
-
-  Vector2 t0{s.uvTopLeft.x, s.uvBottomRight.y};
-  Vector2 t1{s.uvTopLeft.x, s.uvTopLeft.y};
-  Vector2 t2{s.uvBottomRight.x, s.uvTopLeft.y};
-  Vector2 t3{s.uvBottomRight.x, s.uvBottomRight.y};
+  Vector2 t0{sprite->uvTopLeft.x, sprite->uvBottomRight.y};
+  Vector2 t1{sprite->uvTopLeft.x, sprite->uvTopLeft.y};
+  Vector2 t2{sprite->uvBottomRight.x, sprite->uvTopLeft.y};
+  Vector2 t3{sprite->uvBottomRight.x, sprite->uvBottomRight.y};
 
   u32 c = 0xffffffff;
 
@@ -73,11 +71,41 @@ void SpriteManager::CopyOut(const string& name, const Vector2& pos, vector<Sprit
   verts->push_back(SpriteVtx{v2, t2, c});
   verts->push_back(SpriteVtx{v3, t3, c});
 
-  indices->push_back(0);
-  indices->push_back(3);
-  indices->push_back(1);
+  indices->push_back(vertOfs + 0);
+  indices->push_back(vertOfs + 3);
+  indices->push_back(vertOfs + 1);
 
-  indices->push_back(3);
-  indices->push_back(2);
-  indices->push_back(1);
+  indices->push_back(vertOfs + 3);
+  indices->push_back(vertOfs + 2);
+  indices->push_back(vertOfs + 1);
 }
+
+//------------------------------------------------------------------------------
+void SpriteManager::CopyOut(const string& name, const Vector2& pos, vector<SpriteVtx>* verts, vector<u32>* indices)
+{
+  auto it = _spritesByName.find(name);
+  if (it == _spritesByName.end())
+    return;
+
+  CopyOut(it->second, pos, verts, indices);
+}
+
+//------------------------------------------------------------------------------
+void SpriteManager::CopyOut(u16 idx, const Vector2& pos, vector<SpriteVtx>* verts, vector<u32>* indices)
+{
+  assert(idx < _sprites.size());
+  assert(_sprites[idx]);
+
+  CopyOut(_sprites[idx], pos, verts, indices);
+}
+
+//------------------------------------------------------------------------------
+u16 SpriteManager::GetSpriteIndex(const string& name)
+{
+  auto it = _spritesByName.find(name);
+  if (it == _spritesByName.end())
+    return INVALID_SPRITE;
+
+  return it->second->idx;
+}
+

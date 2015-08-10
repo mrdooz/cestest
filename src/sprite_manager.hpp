@@ -12,8 +12,16 @@ namespace ces
 
     static SpriteManager& Instance();
 
-    void AddSprite(const string& name, const string& sub, const Vector2& uvTopLeft, const Vector2& uvBottomRight, const Vector2& size, ObjectHandle handle);
+    u16 AddSprite(const string& name,
+        const string& sub,
+        const Vector2& uvTopLeft,
+        const Vector2& uvBottomRight,
+        const Vector2& size,
+        ObjectHandle handle);
+
     void CopyOut(const string& name, const Vector2& pos, vector<SpriteVtx>* verts, vector<u32>* indices);
+    void CopyOut(u16 idx, const Vector2& pos, vector<SpriteVtx>* verts, vector<u32>* indices);
+    u16 GetSpriteIndex(const string& name);
 
     bool Init();
 
@@ -23,11 +31,15 @@ namespace ces
       Vector2 uvBottomRight;
       Vector2 size;
       ObjectHandle handle;
+      u16 idx;
     };
 
     static SpriteManager* _instance;
 
-    unordered_map<string, Sprite> _sprites;
+    void CopyOut(const Sprite* sprite, const Vector2& pos, vector<SpriteVtx>* verts, vector<u32>* indices);
+
+    unordered_map<string, Sprite*> _spritesByName;
+    vector<Sprite*> _sprites;
   };
 
 #define SPRITE_MANAGER SpriteManager::Instance()
