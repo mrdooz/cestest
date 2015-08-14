@@ -13,6 +13,7 @@
 #include "system/render.hpp"
 #include "system/input.hpp"
 #include "system/physics.hpp"
+#include "global.hpp"
 
 using namespace ces;
 
@@ -25,9 +26,7 @@ static void error_callback(int error, const char* description)
 struct Game
 {
   static bool Create();
-
   static Game& Instance();
-
   int time = 0;
 };
 
@@ -74,48 +73,34 @@ int main(int, char**)
   g_RenderSystem.Init();
   g_InputSystem.Init();
 
-  vector<Entity> entities;
+  g_systems.push_back(&g_RenderSystem);
+  g_systems.push_back(&g_InputSystem);
+  g_systems.push_back(&g_PhysicsSystem);
 
   // clang-format off
   for (int i = 0; i < 10; ++i)
   {
-    entities.push_back(
-        Entity()
-        .AddComponent(PositionComponent::FACTORY.AllocComponent(Vector2{(float)i * 100, 0}), ComponentMask::CMPosition)
-        .AddComponent(RenderComponent::FACTORY.AllocComponent(SPRITE_MANAGER.GetSpriteIndex("enemyBlack1")), ComponentMask::CMRender));
+    AddEntity(EntityBuilder(Entity::Type::Enemy)
+              .AddComponent<PositionComponent>(Vector2{(float)i * 100, 0})
+              .AddComponent<RenderComponent>(SPRITE_MANAGER.GetSpriteIndex("enemyBlack1"))
+              .Build());
   }
 
-  entities.push_back(
-        Entity()
-        .AddComponent(PositionComponent::FACTORY.AllocComponent(Vector2{100, 100}),ComponentMask::CMPosition)
-        .AddComponent(RenderComponent::FACTORY.AllocComponent(SPRITE_MANAGER.GetSpriteIndex("playerShip1_red")), ComponentMask::CMRender)
-        .AddComponent(InputComponent::FACTORY.AllocComponent(), ComponentMask::CMInput)
-        .AddComponent(PhysicsComponent::FACTORY.AllocComponent(), ComponentMask::CMPhysics));
+  AddEntity(EntityBuilder(Entity::Type::Player)
+            .AddComponent<PositionComponent>(Vector2{100, 600})
+            .AddComponent<RenderComponent>(SPRITE_MANAGER.GetSpriteIndex("playerShip1_red"))
+            .AddComponent<InputComponent>()
+            .AddComponent<PhysicsComponent>()
+            .Build());
 
-  vector<SystemBase*> systems;
-  systems.push_back(&g_RenderSystem);
-  systems.push_back(&g_InputSystem);
-  systems.push_back(&g_PhysicsSystem);
-
-  for (Entity& e : entities)
-  {
-    for (SystemBase* system : systems)
-    {
-      if ((e.componentMask & system->componentMask) == system->componentMask)
-      {
-        // the entity has all the components the system wants, so add it
-        system->AddEntity(e);
-      }
-    }
-  }
+  // clang-format on
 
   bool show_test_window = true;
   bool show_another_window = false;
 
-  //  RenderComponent::Create("enemyBlack1", Vector2{0,0});
-  //  RenderComponent::Create("enemyBlack2", Vector2{120,0});
+  glfwSetTime(0);
+  double lastTick = 0;
 
-  // Main loop
   while (!glfwWindowShouldClose(window))
   {
     ImGuiIO& io = ImGui::GetIO();
@@ -140,8 +125,13 @@ int main(int, char**)
           ImGui::GetIO().Framerate);
     }
 
+    double now = glfwGetTime();
     UpdateState state;
-    for (SystemBase* s: systems)
+    state.curTime = (float)now;
+    state.delta = (float)(now - lastTick);
+    lastTick = now;
+
+    for (SystemBase* s: g_systems)
     {
       s->Tick(state);
     }
@@ -150,7 +140,6 @@ int main(int, char**)
     glfwSwapBuffers(window);
   }
 
-  // Cleanup
   ImGui_ImplGlfwGL3_Shutdown();
   glfwTerminate();
 

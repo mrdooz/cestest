@@ -12,6 +12,18 @@ namespace ces
   struct Vector2
   {
     float x, y;
+
+    friend Vector2 operator*(float s, const Vector2& v)
+    {
+      return Vector2{s * v.x, s * v.y};
+    }
+
+    Vector2 operator+=(const Vector2& rhs)
+    {
+      x += rhs.x;
+      y += rhs.y;
+      return *this;
+    }
   };
 
   struct Vector3

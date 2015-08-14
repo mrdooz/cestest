@@ -8,33 +8,62 @@ namespace ces
 
   struct Entity
   {
-    enum { MAX_COMPONENTS = 16 };
-
-    Entity& AddComponent(void* ptr, ComponentMask type)
+    enum class Type
     {
-      components[numComponents++] = {ptr, type};
+      Player,
+      Enemy,
+      Bullet,
+    };
+
+    Entity(Type type) : type(type) {}
+
+    void* GetComponent(ComponentMask mask) const
+    {
+      for (const ComponentData& c : components)
+      {
+        if (c.type == mask)
+          return c.ptr;
+      }
+
+      return nullptr;
+    }
+
+    struct ComponentData
+    {
+      void* ptr;
+      ComponentMask type;
+    };
+
+    vector<ComponentData> components;
+
+    Type type;
+    u64 componentMask = 0;
+  };
+
+  struct EntityBuilder
+  {
+    EntityBuilder(Entity::Type type) : type(type) {}
+
+    template <typename T, typename... Args>
+    EntityBuilder& AddComponent(Args... args)
+    {
+      void* ptr = T::FACTORY.AllocComponent(args...);
+      ComponentMask type = (ComponentMask)T::type;
+      components.push_back({ptr, type });
       componentMask |= (u64)type;
       return *this;
     }
 
-    void* GetComponent(ComponentMask mask) const
+    Entity* Build()
     {
-      for (int i = 0; i < numComponents; ++i)
-      {
-        if (components[i].type == mask)
-          return components[i].ptr;
-      }
-      return nullptr;
+      Entity* e = new Entity(type);
+      e->components = components;
+      e->componentMask = componentMask;
+      return e;
     }
 
-    struct
-    {
-      void* ptr;
-      ComponentMask type;
-    }
-    components[MAX_COMPONENTS];
-    int numComponents = 0;
+    Entity::Type type;
+    vector<Entity::ComponentData> components;
     u64 componentMask = 0;
   };
-
 }

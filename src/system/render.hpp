@@ -12,7 +12,7 @@ namespace ces
     bool Init();
     void Tick(const UpdateState& state);
 
-    virtual void AddEntity(const Entity& entity);
+    virtual void AddEntity(const Entity* entity);
 
     struct SystemEntity
     {

@@ -14,6 +14,8 @@
 		761BB8201B78850B004A017F /* input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 761BB8191B78850B004A017F /* input.cpp */; };
 		761BB8211B78850B004A017F /* physics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 761BB81B1B78850B004A017F /* physics.cpp */; };
 		761BB8221B78850B004A017F /* render.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 761BB81D1B78850B004A017F /* render.cpp */; };
+		761BB8251B7E12E6004A017F /* global.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 761BB8231B7E12E6004A017F /* global.cpp */; };
+		761BB8291B7E3FC6004A017F /* collision.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 761BB8271B7E3FC6004A017F /* collision.cpp */; };
 		766FD2731B72DD3700148282 /* imgui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 766FD26E1B72DD3700148282 /* imgui.cpp */; };
 		7692AE9A1B7517F400EEE8E8 /* imgui_impl_glfw_gl3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7692AE891B7517F400EEE8E8 /* imgui_impl_glfw_gl3.cpp */; };
 		7692AE9B1B7517F400EEE8E8 /* input_buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7692AE8B1B7517F400EEE8E8 /* input_buffer.cpp */; };
@@ -55,7 +57,6 @@
 		761BB8111B782A3C004A017F /* entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = entity.cpp; path = src/entity.cpp; sourceTree = SOURCE_ROOT; };
 		761BB8121B782A3C004A017F /* entity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = entity.hpp; path = src/entity.hpp; sourceTree = SOURCE_ROOT; };
 		761BB8141B782A73004A017F /* update_state.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = update_state.hpp; path = src/update_state.hpp; sourceTree = SOURCE_ROOT; };
-		761BB8151B782B06004A017F /* system_base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = system_base.hpp; path = src/system_base.hpp; sourceTree = SOURCE_ROOT; };
 		761BB8171B78850B004A017F /* ai.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ai.cpp; path = src/system/ai.cpp; sourceTree = SOURCE_ROOT; };
 		761BB8181B78850B004A017F /* ai.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ai.hpp; path = src/system/ai.hpp; sourceTree = SOURCE_ROOT; };
 		761BB8191B78850B004A017F /* input.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = input.cpp; path = src/system/input.cpp; sourceTree = SOURCE_ROOT; };
@@ -64,6 +65,11 @@
 		761BB81C1B78850B004A017F /* physics.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = physics.hpp; path = src/system/physics.hpp; sourceTree = SOURCE_ROOT; };
 		761BB81D1B78850B004A017F /* render.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = render.cpp; path = src/system/render.cpp; sourceTree = SOURCE_ROOT; };
 		761BB81E1B78850B004A017F /* render.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = render.hpp; path = src/system/render.hpp; sourceTree = SOURCE_ROOT; };
+		761BB8231B7E12E6004A017F /* global.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = global.cpp; path = src/global.cpp; sourceTree = SOURCE_ROOT; };
+		761BB8241B7E12E6004A017F /* global.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = global.hpp; path = src/global.hpp; sourceTree = SOURCE_ROOT; };
+		761BB8261B7E1424004A017F /* system_base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = system_base.hpp; path = src/system/system_base.hpp; sourceTree = SOURCE_ROOT; };
+		761BB8271B7E3FC6004A017F /* collision.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = collision.cpp; path = src/system/collision.cpp; sourceTree = SOURCE_ROOT; };
+		761BB8281B7E3FC6004A017F /* collision.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = collision.hpp; path = src/system/collision.hpp; sourceTree = SOURCE_ROOT; };
 		766FD26D1B72DD3700148282 /* imconfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imconfig.h; path = imgui/imconfig.h; sourceTree = SOURCE_ROOT; };
 		766FD26E1B72DD3700148282 /* imgui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui.cpp; path = imgui/imgui.cpp; sourceTree = SOURCE_ROOT; };
 		766FD26F1B72DD3700148282 /* imgui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui.h; path = imgui/imgui.h; sourceTree = SOURCE_ROOT; };
@@ -147,7 +153,9 @@
 			isa = PBXGroup;
 			children = (
 				761BB8161B7884FA004A017F /* system */,
-				761BB8151B782B06004A017F /* system_base.hpp */,
+				761BB8261B7E1424004A017F /* system_base.hpp */,
+				761BB8231B7E12E6004A017F /* global.cpp */,
+				761BB8241B7E12E6004A017F /* global.hpp */,
 				761BB8141B782A73004A017F /* update_state.hpp */,
 				761BB8111B782A3C004A017F /* entity.cpp */,
 				761BB8121B782A3C004A017F /* entity.hpp */,
@@ -186,6 +194,8 @@
 		761BB8161B7884FA004A017F /* system */ = {
 			isa = PBXGroup;
 			children = (
+				761BB8271B7E3FC6004A017F /* collision.cpp */,
+				761BB8281B7E3FC6004A017F /* collision.hpp */,
 				761BB8171B78850B004A017F /* ai.cpp */,
 				761BB8181B78850B004A017F /* ai.hpp */,
 				761BB8191B78850B004A017F /* input.cpp */,
@@ -280,8 +290,10 @@
 				7692AEA71B75736C00EEE8E8 /* graphics.cpp in Sources */,
 				7692AE9C1B7517F400EEE8E8 /* main.cpp in Sources */,
 				7692AEAB1B759E5500EEE8E8 /* sprite_manager.cpp in Sources */,
+				761BB8251B7E12E6004A017F /* global.cpp in Sources */,
 				7692AE9B1B7517F400EEE8E8 /* input_buffer.cpp in Sources */,
 				7692AE9D1B7517F400EEE8E8 /* parse_base.cpp in Sources */,
+				761BB8291B7E3FC6004A017F /* collision.cpp in Sources */,
 				7692AEA01B7517F400EEE8E8 /* resource_manager.cpp in Sources */,
 				7692AE9E1B7517F400EEE8E8 /* path_utils.cpp in Sources */,
 				7692AEA41B751A9000EEE8E8 /* logging.cpp in Sources */,

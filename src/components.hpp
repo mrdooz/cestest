@@ -61,6 +61,7 @@ namespace ces
 
   struct PositionComponent
   {
+    enum { type = ComponentMask::CMPosition };
     typedef ComponentBase<PositionComponent> Factory;
     static Factory FACTORY;
     Vector2 pos;
@@ -68,6 +69,7 @@ namespace ces
 
   struct RenderComponent
   {
+    enum { type = ComponentMask::CMRender };
     typedef ComponentBase<RenderComponent> Factory;
     static Factory FACTORY;
     u32 spriteIdx;
@@ -75,12 +77,14 @@ namespace ces
 
   struct InputComponent
   {
+    enum { type = ComponentMask::CMInput };
     typedef ComponentBase<InputComponent> Factory;
     static Factory FACTORY;
   };
 
   struct PhysicsComponent
   {
+    enum { type = ComponentMask::CMPhysics };
     typedef ComponentBase<PhysicsComponent> Factory;
     static Factory FACTORY;
     Vector2 vel;

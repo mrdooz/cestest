@@ -16,11 +16,11 @@ PhysicsSystem::PhysicsSystem()
 }
 
 //------------------------------------------------------------------------------
-void PhysicsSystem::AddEntity(const Entity& entity)
+void PhysicsSystem::AddEntity(const Entity* entity)
 {
   entities.push_back(SystemEntity{
-    (PositionComponent*)entity.GetComponent(CMPosition),
-    (PhysicsComponent*)entity.GetComponent(CMPhysics)});
+    (PositionComponent*)entity->GetComponent(CMPosition),
+    (PhysicsComponent*)entity->GetComponent(CMPhysics)});
 }
 
 //------------------------------------------------------------------------------
@@ -32,4 +32,9 @@ bool PhysicsSystem::Init()
 //------------------------------------------------------------------------------
 void PhysicsSystem::Tick(const UpdateState& state)
 {
+  for (SystemEntity& e : entities)
+  {
+    e.pos->pos += state.delta * e.physics->vel;
+  }
 }
+

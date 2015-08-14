@@ -17,11 +17,11 @@ RenderSystem::RenderSystem()
 }
 
 //------------------------------------------------------------------------------
-void RenderSystem::AddEntity(const Entity& entity)
+void RenderSystem::AddEntity(const Entity* entity)
 {
   entities.push_back(SystemEntity{
-    (PositionComponent*)entity.GetComponent(CMPosition),
-    (RenderComponent*)entity.GetComponent(CMRender)});
+    (PositionComponent*)entity->GetComponent(CMPosition),
+    (RenderComponent*)entity->GetComponent(CMRender)});
 }
 
 //------------------------------------------------------------------------------
