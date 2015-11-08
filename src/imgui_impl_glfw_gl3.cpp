@@ -3,6 +3,8 @@
 
 #include <imgui.h>
 #include "imgui_impl_glfw_gl3.h"
+#include "global.hpp"
+#include "event_manager.hpp"
 
 // GL3W/GLFW
 #include <GL/gl3w.h>
@@ -13,6 +15,8 @@
 #define GLFW_EXPOSE_NATIVE_WGL
 #include <GLFW/glfw3native.h>
 #endif
+
+using namespace ces;
 
 // Data
 static GLFWwindow*  g_Window = NULL;
@@ -116,16 +120,25 @@ void ImGui_ImplGlfwGL3_ScrollCallback(GLFWwindow*, double /*xoffset*/, double yo
 
 void ImGui_ImplGlfwGL3_KeyCallback(GLFWwindow*, int key, int, int action, int mods)
 {
-    ImGuiIO& io = ImGui::GetIO();
-    if (action == GLFW_PRESS)
-        io.KeysDown[key] = true;
-    if (action == GLFW_RELEASE)
-        io.KeysDown[key] = false;
+  ImGuiIO& io = ImGui::GetIO();
 
-    (void)mods; // Modifiers are not reliable across systems
-    io.KeyCtrl = io.KeysDown[GLFW_KEY_LEFT_CONTROL] || io.KeysDown[GLFW_KEY_RIGHT_CONTROL];
-    io.KeyShift = io.KeysDown[GLFW_KEY_LEFT_SHIFT] || io.KeysDown[GLFW_KEY_RIGHT_SHIFT];
-    io.KeyAlt = io.KeysDown[GLFW_KEY_LEFT_ALT] || io.KeysDown[GLFW_KEY_RIGHT_ALT];
+  (void)mods; // Modifiers are not reliable across systems
+  io.KeyCtrl = io.KeysDown[GLFW_KEY_LEFT_CONTROL] || io.KeysDown[GLFW_KEY_RIGHT_CONTROL];
+  io.KeyShift = io.KeysDown[GLFW_KEY_LEFT_SHIFT] || io.KeysDown[GLFW_KEY_RIGHT_SHIFT];
+  io.KeyAlt = io.KeysDown[GLFW_KEY_LEFT_ALT] || io.KeysDown[GLFW_KEY_RIGHT_ALT];
+
+  u8 mod = (io.KeyCtrl * event::kModCtrl) + (io.KeyShift * event::kModShift) + (io.KeyAlt * event::kModAlt);
+
+  if (action == GLFW_PRESS)
+  {
+    io.KeysDown[key] = true;
+    g_eventManager->AddEvent(event::KeyDown{key, mod});
+  }
+  if (action == GLFW_RELEASE)
+  {
+    io.KeysDown[key] = false;
+    g_eventManager->AddEvent(event::KeyUp{key, mod});
+  }
 }
 
 void ImGui_ImplGlfwGL3_CharCallback(GLFWwindow*, unsigned int c)

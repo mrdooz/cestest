@@ -7,7 +7,8 @@ namespace ces
   struct PositionComponent;
   struct InputComponent;
 
-  struct InputSystem : public SystemBase
+//  struct InputSystem : public SystemBase
+  struct InputSystem
   {
     InputSystem();
     bool Init();
@@ -15,13 +16,13 @@ namespace ces
 
     virtual void AddEntity(const Entity* entity);
 
-    struct SystemEntity
-    {
-      PositionComponent* pos;
-      InputComponent* input;
-    };
-
-    vector<SystemEntity> entities;
+//    struct SystemEntity
+//    {
+//      PositionComponent* pos;
+//      InputComponent* input;
+//    };
+//
+//    vector<SystemEntity> entities;
   };
 
   extern InputSystem g_InputSystem;

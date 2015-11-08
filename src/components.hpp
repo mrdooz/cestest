@@ -3,6 +3,7 @@
 
 namespace ces
 {
+#if 0
   enum ComponentMask
   {
     CMPosition = 1 << 0,
@@ -90,5 +91,5 @@ namespace ces
     Vector2 vel;
     Vector2 acc;
   };
-
+#endif
 }

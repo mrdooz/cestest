@@ -14,6 +14,7 @@
 #include "system/input.hpp"
 #include "system/physics.hpp"
 #include "global.hpp"
+#include "event_manager.hpp"
 
 using namespace ces;
 
@@ -42,6 +43,31 @@ struct SpriteInfo
   int numAnimations = 1;
   vector<int> sprites;
 };
+
+
+
+struct EntityFactory
+{
+  static Entity2 Create()
+  {
+    Entity2 tmp = Entity2{_nextId++};
+    return tmp;
+  }
+
+  static u32 _nextId;
+};
+
+u32 EntityFactory::_nextId;
+
+struct EnemyAISystem
+{
+  void AddEntity(const Entity2& e)
+  {
+
+  }
+};
+
+EntityFactory g_EntityFactory;
 
 //------------------------------------------------------------------------------
 int main(int, char**)
@@ -73,25 +99,33 @@ int main(int, char**)
   g_RenderSystem.Init();
   g_InputSystem.Init();
 
-  g_systems.push_back(&g_RenderSystem);
-  g_systems.push_back(&g_InputSystem);
-  g_systems.push_back(&g_PhysicsSystem);
+  g_eventManager = new EventManager();
 
-  // clang-format off
+//  g_systems.push_back(&g_RenderSystem);
+//  g_systems.push_back(&g_InputSystem);
+//  g_systems.push_back(&g_PhysicsSystem);
+
   for (int i = 0; i < 10; ++i)
   {
-    AddEntity(EntityBuilder(Entity::Type::Enemy)
-              .AddComponent<PositionComponent>(Vector2{(float)i * 100, 0})
-              .AddComponent<RenderComponent>(SPRITE_MANAGER.GetSpriteIndex("enemyBlack1"))
-              .Build());
+    Entity2 e = EntityFactory::Create();
+    g_RenderSystem.AddEntity(&e, Vector2{0,0},SPRITE_MANAGER.GetSpriteIndex("enemyBlack1"));
   }
 
-  AddEntity(EntityBuilder(Entity::Type::Player)
-            .AddComponent<PositionComponent>(Vector2{100, 600})
-            .AddComponent<RenderComponent>(SPRITE_MANAGER.GetSpriteIndex("playerShip1_red"))
-            .AddComponent<InputComponent>()
-            .AddComponent<PhysicsComponent>()
-            .Build());
+  // clang-format off
+//  for (int i = 0; i < 10; ++i)
+//  {
+//    AddEntity(EntityBuilder(Entity::Type::Enemy)
+//              .AddComponent<PositionComponent>(Vector2{(float)i * 100, 0})
+//              .AddComponent<RenderComponent>(SPRITE_MANAGER.GetSpriteIndex("enemyBlack1"))
+//              .Build());
+//  }
+//
+//  AddEntity(EntityBuilder(Entity::Type::Player)
+//            .AddComponent<PositionComponent>(Vector2{100, 600})
+//            .AddComponent<RenderComponent>(SPRITE_MANAGER.GetSpriteIndex("playerShip1_red"))
+//            .AddComponent<InputComponent>()
+//            .AddComponent<PhysicsComponent>()
+//            .Build());
 
   // clang-format on
 
@@ -100,6 +134,12 @@ int main(int, char**)
 
   glfwSetTime(0);
   double lastTick = 0;
+
+  const auto& fn = [](const event::EventBase* b)
+  {
+    int a = 10;
+  };
+  g_eventManager->RegisterListener(event::kEventKeyUp, fn);
 
   while (!glfwWindowShouldClose(window))
   {
@@ -131,10 +171,14 @@ int main(int, char**)
     state.delta = (float)(now - lastTick);
     lastTick = now;
 
+
     for (SystemBase* s: g_systems)
     {
       s->Tick(state);
     }
+
+    g_eventManager->Tick();
+
 
     ImGui::Render();
     glfwSwapBuffers(window);

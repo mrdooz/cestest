@@ -11,17 +11,22 @@ RenderSystem ces::g_RenderSystem;
 
 //------------------------------------------------------------------------------
 RenderSystem::RenderSystem()
-  : SystemBase(CMPosition | CMRender)
+//  : SystemBase(CMPosition | CMRender)
 {
-
+  _entityPos.resize(4096);
+  _entitySpriteIdx.resize(4096);
 }
 
 //------------------------------------------------------------------------------
-void RenderSystem::AddEntity(const Entity* entity)
+void RenderSystem::AddEntity(const Entity2* entity, const Vector2& pos, u32 spriteIdx)
 {
-  entities.push_back(SystemEntity{
-    (PositionComponent*)entity->GetComponent(CMPosition),
-    (RenderComponent*)entity->GetComponent(CMRender)});
+  _entityPos[_numEntities] = pos;
+  _entitySpriteIdx[_numEntities] = spriteIdx;
+  _entityIdToIdx[entity->id] = _numEntities;
+  _numEntities += 1;
+//  entities.push_back(SystemEntity{
+//    (PositionComponent*)entity->GetComponent(CMPosition),
+//    (RenderComponent*)entity->GetComponent(CMRender)});
 }
 
 //------------------------------------------------------------------------------
@@ -88,10 +93,14 @@ void RenderSystem::Tick(const UpdateState& state)
   vector<u32> indices;
 
   // copy out all the active components
-  for (SystemEntity& e : entities)
+  for (int i = 0; i < _numEntities; ++i)
   {
-    SPRITE_MANAGER.CopyOut(e.render->spriteIdx, e.pos->pos, &verts, &indices);
+    SPRITE_MANAGER.CopyOut(_entitySpriteIdx[i], _entityPos[i], &verts, &indices);
   }
+//  for (SystemEntity& e : entities)
+//  {
+//    SPRITE_MANAGER.CopyOut(e.render->spriteIdx, e.pos->pos, &verts, &indices);
+//  }
 
   GL_CHECK(glBindBuffer(GL_ARRAY_BUFFER, vboHandle));
   GL_CHECK(glBufferData(GL_ARRAY_BUFFER, (GLsizeiptr)verts.size() * sizeof(SpriteVtx), (GLvoid*)verts.data(), GL_STREAM_DRAW));
